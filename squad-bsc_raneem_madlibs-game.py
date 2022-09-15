@@ -1,0 +1,6 @@
+color = input("please enter a color : ")
+noun = input("please enter a noun :")
+name = input("please enter a name : ")
+print("roses are " + color)
+print(noun + " are purple")
+print("my name is " + name)
