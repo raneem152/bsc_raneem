@@ -1,0 +1,26 @@
+
+HANGMAN GAME-squad bsc:
+this code is a gusseing game , a random word from hardcoded words are chosen from a list and will save in a variable called secret_word.
+then the game ask the user to enter a letter from a-z 
+if the letter in the secret_word the game will display "correct guess"
+then save the letter in array called letters which will contains the correct guessed leters to be compared with the secret_word
+and game will told the user the number of letters left to be guessed
+if the letter isn't in the secret_word ,the game will display"wrong guess" 
+and this will decrese the chances of user (wrong_guesses) , user have only 8 wrong_guesses
+in each wrong guess the game will inform the user th number of chances left
+if the user enter the same letter twice , the game will display "Please Don't enter same char twice" and ask the user to enter a letter again
+if the user guessed the word completly befor the 8 chances , game will dispaly "congrats , YOU WIN"
+and if the user can;t guessed the word completly  befor the 8 chances the game will display "YOU LOSE"
+in the end the game will display the secret_word
+we use exception (try and except)to handle if the user enter more than one letter in a turn or if he enter a letter twice 
+
+
+we wrote the code as a squad during zoom meeting 
+kholud --> if the user guess the right letter
+raneem --> if the user guess wrong
+shady --> handling exception
+seif --> choosing random word
+
+
+
+
