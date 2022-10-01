@@ -1,0 +1,68 @@
+task 3 in arduino --> robot that is controlled via Bluetooth and the robot will have to move forward, move backward, rotate clockwise, and counter-clockwise. This project is a Squad project
+components used in ciruit 1- arduino uno  2-HC-05 Bluetooth module    3- 4 5v volt DC motor   4-L298N Motor driver
+The HC-05 Bluetooth Module is discussed first in terms of the circuit's design. The Bluetooth module's +5V and GND pins are linked to the Arduino's +5V and GND.
+motor driver is connected to the arduino as an inputs during the pins and with 4 motors as an output ,as its connected to ground an vcc 5 volt
+Bluetooth module connecting the tx with rx ,and vcc 5 volt and ground
+Since I will be only transmitting data related to the Robot’s movement from Android Phone to Bluetooth Module and do not intend to receive any data from Arduino,
+I will connect only the TX pin of the Bluetooth Module to RX Pin of Arduino
+
+
+
+code-->
+first including softwareserial.h library to control the car via bluetooth 
+then define the pins of wheels to control the car movement (PINS : IN1-> 12 , IN2-> 11 , IN3-> 10 , IN4-> 9)
+each pin control a wheel of car (IN1: right forward wheel , IN2 : right backward wheel , IN3 : left forward wheel , IN4: left bakward wheel)
+convert the pins of  TX & RX form default pins (0 , 1) to pins (2 , 3)
+then define the string of data that tha user  will enter in a string type and the btVal is the integer value of the data to be compared in the switch cases
+
+
+functions of movement:
+1- void forward():
+this function will move the car forward by turning on the 2 motors in the forward wheels (IN1 , IN3)
+and turning off the 2 backward motors(IN2 , IN4)
+
+2-void reverse():
+this function will move the car backward by turning on the 2 motors in the backward wheels (IN2 , IN4)
+and turning off the 2 forward motors(IN1 , IN3)
+
+3- void left():
+this function will rotate the car anticlockwise by turning on the motor of the left forward wheel (IN3)
+and turning off the motors of other wheels
+
+4- void right():
+this function will rotate the car clockwise by turning on the motor of the right forward wheel (IN1)
+and turning off the motors of other wheels
+
+5- void stoprobot():
+this function will stor the movment of car by turinig off the motors of all car wheels.
+
+
+->  [void setup()] function:  
+define the pin modes of pins that will control the car 
+then, turning off all the motors of wheels by (digitalwrite a low signal to the pins of motors of wheels)
+then begin the serial with band 9600
+
+->  [void loop()] function:
+the while loop will run only if the user enter an input via bluetooth
+, else if the user didn't enter an input that's mean no bluetooth data 
+and each loop storing the input in the data variable of string type
+then convert data string to int and stor it on btVal variable
+
+then compare the int value of btVal by using switch cases (1 , 2 , 3 , 4 , 5)
+each case will call a function of funtions control the movement of car 
+case 1 means "FORWARD" so it will call [void forward()] function to move the car forward
+case 2 means "REVERSE" so it will call [void reverse()] function to mvoe the car backward
+case 3 means "LEFT" so it will call [void left()] function to rotate the car anticlockwise
+case 4 means "RIGHT" so it will call [void right()] function to rotate the car clockwise
+case 5 means "STOP" so it will call [void stop()] function to stop the movement of tha car
+
+
+task divission:
+
+ shady--> circuit diagram 
+ raneem--> functions & setup()
+ khloud--> software serial part & loop() 
+ all the project discussed in a zoom meeting will upload in slack channel
+
+
+

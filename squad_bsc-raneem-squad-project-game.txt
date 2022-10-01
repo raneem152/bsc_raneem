@@ -1,25 +1,17 @@
-
-HANGMAN GAME-squad bsc:
-this code is a gusseing game , a random word from hardcoded words are chosen from a list and will save in a variable called secret_word.
-then the game ask the user to enter a letter from a-z 
-if the letter in the secret_word the game will display "correct guess"
-then save the letter in array called letters which will contains the correct guessed leters to be compared with the secret_word
-and game will told the user the number of letters left to be guessed
-if the letter isn't in the secret_word ,the game will display"wrong guess" 
-and this will decrese the chances of user (wrong_guesses) , user have only 8 wrong_guesses
-in each wrong guess the game will inform the user th number of chances left
-if the user enter the same letter twice , the game will display "Please Don't enter same char twice" and ask the user to enter a letter again
-if the user guessed the word completly befor the 8 chances , game will dispaly "congrats , YOU WIN"
-and if the user can;t guessed the word completly  befor the 8 chances the game will display "YOU LOSE"
-in the end the game will display the secret_word
-we use exception (try and except)to handle if the user enter more than one letter in a turn or if he enter a letter twice 
+task 3 in arduino --> robot that is controlled via Bluetooth and the robot will have to move forward, move backward, rotate clockwise, and counter-clockwise. This project is a Squad project
+components used in ciruit 1- arduino uno  2-HC-05 Bluetooth module    3- 4 5v volt DC motor   4-L298N Motor driver
+The HC-05 Bluetooth Module is discussed first in terms of the circuit's design. The Bluetooth module's +5V and GND pins are linked to the Arduino's +5V and GND.
+motor driver is connected to the arduino as an inputs during the pins and with 4 motors as an output ,as its connected to ground an vcc 5 volt
+Bluetooth module connecting the tx with rx ,and vcc 5 volt and ground
+Since I will be only transmitting data related to the Robot’s movement from Android Phone to Bluetooth Module and do not intend to receive any data from Arduino,
+I will connect only the TX pin of the Bluetooth Module to RX Pin of Arduino
 
 
 we wrote the code as a squad during zoom meeting 
-kholud --> if the user guess the right letter
-raneem --> if the user guess wrong
-shady --> handling exception
-seif --> choosing random word
+kholud --> 
+raneem --> 
+shady --> 
+
 
 
 
