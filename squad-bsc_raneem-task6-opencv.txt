@@ -1,0 +1,62 @@
+image processing opencv project:
+this code takes 2 images for the same thing current &past images.
+and compare the images by drawing rectangles with green colour to detect the diffrence in colour.
+and the rectangles with blue colour detect the dffrence in shape .
+the user creating the rectangles by draging with mouse clicks.
+
+code:
+first importing libraries 
+then defining the list of coordinates of the rectangles.
+then [rectangle_shape(event,x,y,flag,param)] function to draw the rectangles :
+  1) green rectangles to detect the diffrence in colour by dragging left button.
+  2) blue rectangle to detect the diffrence in shape by dragging right button.
+this function drawing the rectangles deppends on the first click which represent the start point of the rectangle and the last click which represent the end point of(width, hight)
+
+then the part of printing the options for the user 
+
+then reading the 2 images and store it in 2 variables and take a coppy from the current image to drag rectangles on it
+ and show the images after resizing 
+
+then the while loop which will break if the user press q to exit the program and terminate
+
+
+
+division of task:
+
+we write the code during a zoom meeting and test it
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
