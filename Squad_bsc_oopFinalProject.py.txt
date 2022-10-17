@@ -1,0 +1,417 @@
+from abc import abstractmethod
+from gettext import lngettext
+import math
+from pickle import TRUE
+import numpy
+from abc import ABC, abstractmethod
+import turtle
+import time
+
+
+class Polygon(ABC):
+
+    @abstractmethod
+    def CalcArea(self):
+        pass
+
+    @abstractmethod
+    def CalcPer(self):
+        pass
+
+    @abstractmethod
+    def Draw(self):
+        pass
+#---------------------------------------------------------------------------------------------------------------------
+class Isoscles(Polygon):
+    def __init__(self, a=0, b=0, c=0):
+        self.__a=a
+        self.__b=b
+        self.__c=c
+
+    def geta (self):
+        return self.__a
+
+    def getb (self):
+        return self.__b
+
+    def getc (self):
+        return self.__c 
+    #nfs el length b access mo5talef
+    def seta (self,newa):
+        self.__a=newa
+
+    def setb (self,newb):
+        self.__b=newb
+
+    def setc (self,newb):
+        self.__c=newb     
+
+    def CalcArea(self):
+        s = (self.__a + self.__b + self.__c) / 2  
+        area = (s*(s- self.__a)*(s- self.__b)*(s- self.__c)) ** 0.5
+        return area
+    def CalcPer(self):
+        perimeter=self.__a+self.__b+self.__c
+        return perimeter
+    def Draw(self):
+       tur = turtle.Turtle()
+ 
+       tur.forward(self.__b*10)  
+       tur.left(120)
+       tur.forward(self.__a*10)
+ 
+       tur.left(120)
+       tur.forward(self.__c*10)
+       time.sleep(5)
+       #faddy el turtle abl el rasma el gdeeda
+       #turtle.clear()
+       
+         
+#--------------------------------------------------------------------------------------------------------------------------------------------
+class Equilateral (Polygon):
+    def __init__(self,a=0,b=0,c=0) :
+        self.__a=a
+        self.__b=b
+        self.__c=c
+
+    def geta (self):
+        return self.__a
+
+    def getb (self):
+        return self.__b
+
+    def getc (self):
+        return self.__c 
+    #nfs el length b access mo5talef
+    def seta (self,newa):
+        self.__a=newa
+
+    def setb (self,newa):
+        self.__b=newa
+
+    def setc (self,newa):
+        self.__c=newa                   
+
+    def CalcArea(self ):
+        s = (self.__a + self.__b + self.__c) / 2  
+        area = (s*(s- self.__a)*(s- self.__b)*(s- self.__c)) ** 0.5
+        return area
+    def CalcPer(self):
+        perimeter=self.__a+self.__b+self.__c
+        return perimeter
+    def Draw(self):
+       
+ 
+       tur = turtle.Turtle()
+ 
+       tur.forward(self.__a*10)  
+       tur.left(120)
+       tur.forward(self.__b*10)
+ 
+       tur.left(120)
+       tur.forward(self.__c*10)
+       time.sleep(5)
+       #faddy el turtle abl el rasma el gdeeda 2
+       #turtle.reset()
+ 
+          
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+class Pentagon(Polygon):
+        #cosntructors
+        def init(self,side):
+            self.__side=side
+        #getter
+        def getSide(self):
+            return self.__side
+        #setter
+        def setSide(self,newSide):
+            self.__side=newSide    
+
+        #Methods Over
+        def CalcArea(self):
+            return ((1/4)*math.sqrt(5*(5+(2*math.sqrt(5))))*(self.__side*self.__side))
+
+        def CalcPer(self):
+            return self.__side*5
+        
+        def Draw(self):
+            t = turtle.Turtle()
+            for i in range(5):
+              t.forward(self.__side*10) 
+              t.right(72)  
+            time.sleep(5)  
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+class Octagon(Polygon):
+
+   def init(self,my_pts):
+      self.__pts=my_pts
+
+   def getpts (self):
+        return self.__pts
+
+   def setpts (self,newpts):
+        self.__pts=newpts
+
+   def CalcArea(self):
+      return 2 * (1 + math.sqrt(2)) * self.__pts * self.__pts
+   def CalcPer(self):
+      return 8 * self.__pts
+
+   def Draw(self):
+      #img = np.zeros((512, 512, 3), np.uint8)
+      #pts = np.array([[100, 50], [200, 300], [700, 200], [500, 100]], np.int32)
+      #pts = pts.reshape((-1, 1, 2))
+      #cv2.polylines(img, [pts], True, (0, 255, 255), 3)
+
+
+      # making a workScreen
+      ws = turtle.Screen()
+
+      # defining a turtle instance
+      geekyTurtle = turtle.Turtle()
+
+      # iterating the loop 8 times
+      for i in range(8):
+        
+         geekyTurtle.forward(self.__pts*10)
+
+         
+         geekyTurtle.left(45)
+      time.sleep(5)   
+#------------------------------------------------------------------------------
+class Square(Polygon):
+
+        def init(self,length):
+            self.__length=length
+            
+        def getLength(self):
+            return self.__length
+
+        def setLength(self,newLength):
+            self.__length=newLength 
+
+        def CalcArea(self):
+            return(self.__length*self.__length)
+
+        def CalcPer(self):
+            return(4*self.__length)
+        #drawing the square
+        def Draw(self):
+            t = turtle.Turtle()
+            ls=self.__length
+            for _ in range(4):
+                t.forward(ls*10) 
+                t.left(90) 
+            time.sleep(5)        
+#----------------------------------------------------------------------------------------
+class Rectangle(Polygon):
+
+        def init(self,length,breadth):
+            self.__length=length
+            self.__breadth=breadth
+
+        def getLength(self):
+            return self.__length
+        def getbreadth(self):
+            return self.__breadth    
+
+        def setLength(self,newLength):
+            self.__length=newLength  
+
+        def setbreadth(self,newbreadth):
+            self.__breadth=newbreadth      
+
+        def CalcArea(self):
+            return self.__length*self.__breadth
+        def CalcPer(self):
+            return 2*self.__length+2*self.__breadth
+
+         
+        #drawing the rect
+        def Draw(self):
+            t = turtle.Turtle()
+ 
+            l =self.__length
+            w =self.__breadth
+ 
+            for _ in range(4):
+   
+  # drawing length
+             if _% 2 == 0:
+                t.forward(l*10) # Forward turtle by l units
+                t.left(90) # Turn turtle by 90 degree
+ 
+  # drawing width
+             else:
+                t.forward(w*10) # Forward turtle by w units
+                t.left(90) # Turn turtle by 90 degree   
+            time.sleep(5)    
+#=============================================================================================================
+class Hexagon(Polygon):
+
+   def init(self,my_pts):
+      self.__pts=my_pts
+
+   def getpts (self):
+        return self.__pts
+
+   def setpts (self,newpts):
+        self.__pts=newpts
+
+   def CalcArea(self):
+      return ((3 * math.sqrt(3) *(self.__pts * self.__pts)) / 2)
+   def CalcPer(self):
+      return 6 * self.__pts
+
+   def Draw(self):
+      
+
+      # Start a work Screen
+      ws = turtle.Screen()
+
+      # Define a Turtle Instance
+      geekyTurtle = turtle.Turtle()
+
+      # executing loop 6 times for 6 sides
+      for i in range(6):
+         # Move forward by 90 units
+         geekyTurtle.forward(self.__pts*10)
+
+         # Turn left the turtle by 300 degrees
+         geekyTurtle.left(300)
+      #turtle.exitonclick()
+      time.sleep(5)
+#---------------------------------------------------------------------------------------------------------------------
+
+def Menu():
+    while TRUE:
+        print("Choose the polygon: \n")
+        print("********************")
+        print("0.TERMINATE ")
+        print("1.Isosceles Triangle")
+        print("2.Equilateral Triangle")
+        print("3.Hexagon")
+        print("4.Pentagon")
+        print("5.Octagon")
+        print("6.Rectangle")
+        print("7.Square")
+
+        x=int(input("You chose: "))
+
+
+        if x==1:
+            is1=Isoscles()
+            try:
+               s = int(input("Enter the Length of 2 equal sides:"))
+               s2= int(input("Enter the Length of 3rd side:"))
+            except :
+                print("Invalid Input")
+                Menu()
+            
+            is1.setb(s)
+            is1.setc(s)
+            is1.seta(s2)
+
+            print(is1.CalcArea())
+            print(is1.CalcPer())
+            print(is1.Draw())
+            Menu()
+
+        elif x==2:
+            eq1=Equilateral()
+            try:
+                s = int(input("Enter the Length:"))
+            except :
+                print("Invalid Input")
+                Menu()    
+            eq1.seta(s)
+            eq1.setb(s)
+            eq1.setc(s)
+            print(eq1.CalcArea())
+            print(eq1.CalcPer())
+            print(eq1.Draw())
+            Menu()
+
+
+        elif x==3:
+            hex1 = Hexagon()
+            try:
+               s = int(input("Enter the Length:")) 
+            except :
+                print("Invalid Input")
+                Menu() 
+            
+            hex1.setpts(s)
+            print(hex1.CalcArea())
+            print(hex1.CalcPer())
+            print(hex1.Draw())
+            Menu()
+
+        elif x==4:
+            pent1=Pentagon()
+            try:
+               s = int(input("Enter the Length:")) 
+            except :
+                print("Invalid Input")
+                Menu()
+            pent1.setSide(s)
+            print(pent1.CalcArea())
+            print(pent1.CalcPer())
+            print(pent1.Draw())
+            Menu()
+
+        elif x==5:
+            oct1=Octagon()
+            try:
+                s=int(input("Enter the Length:"))
+            except :
+                print("Invalid Input")
+                Menu()    
+            oct1.setpts(s)
+            print(oct1.CalcArea())
+            print(oct1.CalcPer())
+            print(oct1.Draw())
+            Menu()
+
+        elif x==6:
+            rec1=Rectangle()
+            try:
+               ln=int(input("Enter the Length:"))
+               wd=int(input("Enter the Width:"))
+            except :
+                print("Invalid Input")
+                Menu()
+            
+            rec1.setbreadth(wd)
+            rec1.setLength(ln)
+            print(rec1.CalcArea())
+            print(rec1.CalcPer())
+            print(rec1.Draw())
+            Menu()
+
+        elif x==7:
+            sqr1=Square()
+            try:
+               s=int(input("Enter the Length:"))
+            except :
+                print("Invalid Input")
+                Menu()
+            
+            sqr1.setLength(s)
+            print(sqr1.CalcArea())
+            print(sqr1.CalcPer())
+            print(sqr1.Draw())
+            Menu()
+
+        elif x==0:
+            break
+        else:
+            print("Invalid Input,Please choose one of these shapes")
+            Menu()
+
+
+
+Menu()
+    
+
+          
